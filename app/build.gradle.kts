@@ -55,4 +55,18 @@ dependencies {
     // Dagger-Hilt
     implementation (libs.dagger)
     kapt(libs.dagger.compiler)
+
+    // Networking
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+
+    // Lifecycle and ViewModel
+    implementation(libs.lifecycle.extensions)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation (libs.glide)
+
+
+    implementation (libs.androidx.browser)
 }

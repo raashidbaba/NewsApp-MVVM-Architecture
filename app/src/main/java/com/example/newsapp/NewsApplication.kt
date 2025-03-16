@@ -6,7 +6,7 @@ import com.example.newsapp.di.component.DaggerApplicationComponent
 import com.example.newsapp.di.module.ApplicationModule
 
 class NewsApplication:Application() {
-    private lateinit var applicationComponent: ApplicationComponent
+    lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()

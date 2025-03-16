@@ -1,6 +1,8 @@
 [versions]
 agp = "8.4.2"
+browser = "1.8.0"
 dagger = "2.42"
+glide = "4.14.2"
 kotlin = "1.7.10"
 coreKtx = "1.9.0"
 junit = "4.13.2"
@@ -10,11 +12,18 @@ appcompat = "1.5.1"
 material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
+retrofit = "2.9.0"
+converterGson = "2.9.0"
+lifecycleViewmodelKtx = "2.5.1"
+extensions = "1.1.1"
+
 
 [libraries]
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -22,6 +31,11 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+lifecycle-extensions = { module = "android.arch.lifecycle:extensions", version.ref = "extensions" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
