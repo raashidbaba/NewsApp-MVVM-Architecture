@@ -12,14 +12,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.NewsApplication
-import kotlinx.coroutines.launch
 import com.example.newsapp.data.model.Article
 import com.example.newsapp.databinding.ActivityTopHeadlineBinding
 import com.example.newsapp.di.component.DaggerActivityComponent
 import com.example.newsapp.di.module.ActivityModule
 import com.example.newsapp.ui.base.UiState
+import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 
 class TopHeadlineActivity : AppCompatActivity() {
@@ -63,10 +62,12 @@ class TopHeadlineActivity : AppCompatActivity() {
                             renderList(it.data)
                             binding.recyclerView.visibility = View.VISIBLE
                         }
+
                         is UiState.Loading -> {
                             binding.progressBar.visibility = View.VISIBLE
                             binding.recyclerView.visibility = View.GONE
                         }
+
                         is UiState.Error -> {
                             //Handle Error
                             binding.progressBar.visibility = View.GONE
@@ -75,7 +76,6 @@ class TopHeadlineActivity : AppCompatActivity() {
                                 .show()
                         }
 
-                        else -> {}
                     }
                 }
             }

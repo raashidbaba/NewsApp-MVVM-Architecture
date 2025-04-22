@@ -5,7 +5,7 @@ import com.example.newsapp.di.component.ApplicationComponent
 import com.example.newsapp.di.component.DaggerApplicationComponent
 import com.example.newsapp.di.module.ApplicationModule
 
-class NewsApplication:Application() {
+class NewsApplication : Application() {
     lateinit var applicationComponent: ApplicationComponent
 
     override fun onCreate() {
@@ -14,7 +14,7 @@ class NewsApplication:Application() {
     }
 
 
-    private fun injectDependencies(){
+    private fun injectDependencies() {
         applicationComponent = DaggerApplicationComponent
             .builder()
             .applicationModule(ApplicationModule(this))

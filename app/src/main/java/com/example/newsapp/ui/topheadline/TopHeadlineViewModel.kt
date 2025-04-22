@@ -1,6 +1,5 @@
 package com.example.newsapp.ui.topheadline
 
-import android.provider.ContactsContract.CommonDataKinds.StructuredPostal.COUNTRY
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.data.model.Article

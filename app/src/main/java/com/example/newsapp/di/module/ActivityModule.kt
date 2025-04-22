@@ -1,6 +1,5 @@
 package com.example.newsapp.di.module
 
-import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider

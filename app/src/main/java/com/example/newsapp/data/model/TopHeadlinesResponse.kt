@@ -1,6 +1,5 @@
 package com.example.newsapp.data.model
 
-import com.example.newsapp.data.model.Article
 import com.google.gson.annotations.SerializedName
 
 data class TopHeadlinesResponse(
