@@ -7,4 +7,5 @@ data class Source(
     val id: String? = null,
     @SerializedName("name")
     val name: String = "",
+
 )

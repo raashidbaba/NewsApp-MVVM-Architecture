@@ -1,7 +1,7 @@
-package com.example.newsapp.ui.topheadline
+package com.example.newsapp.ui.topheadlinepagination
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -10,8 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.NewsApplication
-import com.example.newsapp.data.model.Article
-import com.example.newsapp.databinding.ActivityTopHeadlineBinding
+import com.example.newsapp.databinding.ActivityTopHeadlinePaginationBinding
 import com.example.newsapp.di.component.DaggerActivityComponent
 import com.example.newsapp.di.module.ActivityModule
 import com.example.newsapp.ui.base.UiState
@@ -21,27 +20,27 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
-class TopHeadlineActivity : AppCompatActivity() {
+class TopHeadlinePaginationActivity : AppCompatActivity() {
+    @Inject
+    lateinit var viewModel: TopHeadlinePaginationViewModel
 
     @Inject
-    lateinit var topHeadlineViewModel: TopHeadlineViewModel
+    lateinit var adapter: TopHeadlinePaginationAdapter
 
-    @Inject
-    lateinit var adapter: TopHeadlineAdapter
-
-    private lateinit var binding: ActivityTopHeadlineBinding
+    private lateinit var binding: ActivityTopHeadlinePaginationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        injectDependencies()
         super.onCreate(savedInstanceState)
-        binding = ActivityTopHeadlineBinding.inflate(layoutInflater)
+        binding = ActivityTopHeadlinePaginationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupUI()
-        setupObserver()
+        injectDependencies()
+        setObserver()
+        setUi()
+
     }
 
-    private fun setupUI() {
-        val recyclerView = binding.recyclerView
+    private fun setUi() {
+        val recyclerView = binding.recyclerViewPagingTopHeadlines
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(
             DividerItemDecoration(
@@ -55,36 +54,32 @@ class TopHeadlineActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupObserver() {
+
+    private fun setObserver() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                topHeadlineViewModel.uiState.collect {
+                viewModel.uiState.collect {
                     when (it) {
-                        is UiState.Success -> {
-                            binding.progressBar.visibility = View.GONE
-                            renderList(it.data)
-                            binding.recyclerView.visibility = View.VISIBLE
+                        is UiState.Loading -> {
+                            binding.progressBarPagingTopHeadlines.visibility = View.VISIBLE
+                            binding.recyclerViewPagingTopHeadlines.visibility = View.GONE
                         }
 
-                        is UiState.Loading -> {
-                            binding.progressBar.visibility = View.VISIBLE
-                            binding.recyclerView.visibility = View.GONE
+                        is UiState.Success -> {
+                            binding.progressBarPagingTopHeadlines.visibility = View.GONE
+                            binding.recyclerViewPagingTopHeadlines.visibility = View.VISIBLE
+                            adapter.submitData(it.data)
                         }
 
                         is UiState.Error -> {
-                            binding.progressBar.visibility = View.GONE
+                            binding.progressBarPagingTopHeadlines.visibility = View.GONE
+                            binding.errorMsgPagingTopHeadlines.visibility = View.VISIBLE
                             displayErrorMessage(it.message)
                         }
-
                     }
                 }
             }
         }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun renderList(articleList: List<Article>) {
-        adapter.addData(articleList)
     }
 
     private fun injectDependencies() {
@@ -92,5 +87,5 @@ class TopHeadlineActivity : AppCompatActivity() {
             .applicationComponent((application as NewsApplication).applicationComponent)
             .activityModule(ActivityModule(this)).build().inject(this)
     }
-
 }
+

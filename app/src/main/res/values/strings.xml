@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">NewsApp</string>
+    <string name="topheadline_sources">Topheadline Sources</string>
+    <string name="dummy_error_msg">Error occurred</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="top_headlines_text">Topheadline Sources</string>
+    <string name="pagination_topheadline_sources">Pagination Topheadline Sources</string>
+    <string name="offline_topheadlines_sources_text">Offline Topheadline Sources</string>
+    <string name="news_categories">News Categories</string>
+    <string name="country_selection_text">Country Selection</string>
+    <string name="language_selection_text">Language Selection</string>
+    <string name="search_text">Search</string>
+    <string name="dummy_news_title">ABC News (AU)</string>
+    <string name="dummy_news_description">Australia\'s most trusted source of local, national and world news. Comprehensive, independent, in-depth analysis, the latest business, sport, weather and more.</string>
+    <string name="dummy_category_value">general</string>
+    <string name="dummy_country_value">India</string>
+    <string name="dummy_language_value">English</string>
+    <string name="category">Category : </string>
+    <string name="country">Country : </string>
+    <string name="language">Language : </string>
+    <string name="category_news_empty_display_text">Looks like there’s no news in this category right now. Check again later for more updates!</string>
+    <string name="category_news">Category News</string>
+    <string name="news_categories_headline">%s News</string>
+    <string name="country_news">Country News</string>
+    <string name="country_news_empty_display_text">No current news for this country. Come back for more updates!</string>
+    <string name="news_countries_headline">%s News Update</string>
+    <string name="news_languages_headline">Latest News in %s</string>
+    <string name="language_news_empty_display_text">No news available in %s at the moment. Please check back later!</string>
+    <string name="dummy_languages_news_headline">Latest News in English</string>
+    <string name="language_text">Language</string>
+    <string name="sort_by_text">Sort By</string>
+    <string name="author_dummy_value">Jennifer Pattison Tuohy</string>
 </resources>

@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.material)
 //    implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.protolite.well.known.types)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -69,4 +71,7 @@ dependencies {
 
 
     implementation (libs.androidx.browser)
+
+    // Paging
+    implementation(libs.androidx.paging.runtime.ktx)
 }
