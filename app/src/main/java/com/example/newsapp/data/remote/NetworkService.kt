@@ -1,5 +1,6 @@
 package com.example.newsapp.data.remote
 
+import com.example.newsapp.data.model.NewsSourcesResponse
 import com.example.newsapp.data.model.TopHeadlineSources
 import com.example.newsapp.data.model.TopHeadlinesResponse
 import retrofit2.http.GET
@@ -15,4 +16,12 @@ interface NetworkService {
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): TopHeadlineSources
+
+    @GET("top-headlines/sources")
+    suspend fun getCategoryBasedNews(@Query("category") category: String): NewsSourcesResponse
+
+
 }
+
+
+

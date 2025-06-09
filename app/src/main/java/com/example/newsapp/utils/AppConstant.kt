@@ -83,5 +83,6 @@ object AppConstant {
         Code("ud", "Urdu"),
         Code("zh", "Chinese")
     )
-
+    val CATEGORIES =
+        listOf("business", "entertainment", "general", "health", "science", "sports", "technology")
 }

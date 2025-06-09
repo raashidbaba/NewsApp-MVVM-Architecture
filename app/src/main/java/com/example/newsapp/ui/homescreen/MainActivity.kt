@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.newsapp.databinding.ActivityMainBinding
+import com.example.newsapp.ui.categorynews.CategoryDisplayActivity
 import com.example.newsapp.ui.topheadline.TopHeadlineActivity
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationActivity
 
@@ -21,7 +22,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.paginationTopHeadlinesButton.setOnClickListener {
-            val intent = Intent(this,TopHeadlinePaginationActivity::class.java)
+            val intent = Intent(this, TopHeadlinePaginationActivity::class.java)
+            startActivity(intent)
+        }
+        binding.newsSourcesButton.setOnClickListener {
+            val intent = Intent(this, CategoryDisplayActivity::class.java)
             startActivity(intent)
         }
     }

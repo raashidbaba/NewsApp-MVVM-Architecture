@@ -19,6 +19,8 @@ extensions = "1.1.1"
 pagingRuntimeKtx = "3.2.1"
 protoliteWellKnownTypes = "18.0.1"
 lifecycleViewmodelAndroid = "2.8.7"
+navigationFragmentKtx = "2.9.0"
+navigationUiKtx = "2.9.0"
 
 
 
@@ -43,6 +45,8 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 lifecycle-extensions = { module = "android.arch.lifecycle:extensions", version.ref = "extensions" }
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -3,10 +3,13 @@ package com.example.newsapp.di.module
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.newsapp.data.repository.CategoryNewsRepository
 import com.example.newsapp.data.repository.TopHeadlinePagingRepository
 import com.example.newsapp.data.repository.TopHeadlineRepository
 import com.example.newsapp.di.ActivityContext
 import com.example.newsapp.ui.base.ViewModelProviderFactory
+import com.example.newsapp.ui.categorynews.CategoryNewsAdapter
+import com.example.newsapp.ui.categorynews.CategoryNewsViewModel
 import com.example.newsapp.ui.topheadline.TopHeadlineAdapter
 import com.example.newsapp.ui.topheadline.TopHeadlineViewModel
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationAdapter
@@ -44,6 +47,15 @@ class ActivityModule(private val activity: AppCompatActivity) {
             })[TopHeadlinePaginationViewModel::class.java]
     }
 
+    @Provides
+    fun provideCategoryNewsViewModel(
+        repository: CategoryNewsRepository,
+        dispatcherProvider: DispatcherProvider
+    ): CategoryNewsViewModel {
+        return ViewModelProvider(activity, ViewModelProviderFactory(CategoryNewsViewModel::class) {
+            CategoryNewsViewModel(repository, dispatcherProvider = dispatcherProvider)
+        })[CategoryNewsViewModel::class.java]
+    }
 
     @Provides
     fun provideTopHeadlineAdapter() = TopHeadlineAdapter(ArrayList())
@@ -51,7 +63,8 @@ class ActivityModule(private val activity: AppCompatActivity) {
     @Provides
     fun provideTopHeadlinesPaginationAdapter() = TopHeadlinePaginationAdapter()
 
-
+    @Provides
+    fun provideCategoryNewsAdapter() = CategoryNewsAdapter(ArrayList())
 }
 
 

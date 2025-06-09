@@ -2,6 +2,8 @@ package com.example.newsapp.di.component
 
 import com.example.newsapp.di.ActivityScope
 import com.example.newsapp.di.module.ActivityModule
+import com.example.newsapp.ui.categorynews.CategoryDisplayActivity
+import com.example.newsapp.ui.categorynews.CategoryNewsActivity
 import com.example.newsapp.ui.topheadline.TopHeadlineActivity
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationActivity
 import dagger.Component
@@ -12,4 +14,6 @@ import dagger.Component
 interface ActivityComponent {
     fun inject(activity: TopHeadlineActivity)
     fun inject(activity: TopHeadlinePaginationActivity)
+    fun inject(activity: CategoryDisplayActivity)
+    fun inject(activity: CategoryNewsActivity)
 }
