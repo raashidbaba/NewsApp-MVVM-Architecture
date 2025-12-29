@@ -15,7 +15,7 @@ constraintlayout = "2.2.0"
 retrofit = "2.9.0"
 converterGson = "2.9.0"
 lifecycleViewmodelKtx = "2.5.1"
-extensions = "1.1.1"
+lifecycleExtensions = "1.1.1"
 pagingRuntimeKtx = "3.2.1"
 protoliteWellKnownTypes = "18.0.1"
 lifecycleViewmodelAndroid = "2.8.7"
@@ -42,7 +42,7 @@ androidx-paging-runtime-ktx = { module = "androidx.paging:paging-runtime-ktx", v
 retrofit2-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-lifecycle-extensions = { module = "android.arch.lifecycle:extensions", version.ref = "extensions" }
+lifecycle-extensions = { module = "android.arch.lifecycle:extensions", version.ref = "lifecycleExtensions" }
 protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
 androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }

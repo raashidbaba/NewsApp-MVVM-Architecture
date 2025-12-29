@@ -20,7 +20,8 @@ interface NetworkService {
     @GET("top-headlines/sources")
     suspend fun getCategoryBasedNews(@Query("category") category: String): NewsSourcesResponse
 
-
+    @GET("top-headlines/sources")
+    suspend fun getCountryBasedNews(@Query("country") country: String): NewsSourcesResponse
 }
 
 

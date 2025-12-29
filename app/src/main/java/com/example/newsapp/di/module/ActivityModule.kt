@@ -4,12 +4,15 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.newsapp.data.repository.CategoryNewsRepository
+import com.example.newsapp.data.repository.CountryNewsRepository
 import com.example.newsapp.data.repository.TopHeadlinePagingRepository
 import com.example.newsapp.data.repository.TopHeadlineRepository
 import com.example.newsapp.di.ActivityContext
 import com.example.newsapp.ui.base.ViewModelProviderFactory
 import com.example.newsapp.ui.categorynews.CategoryNewsAdapter
 import com.example.newsapp.ui.categorynews.CategoryNewsViewModel
+import com.example.newsapp.ui.countrynews.CountryNewsAdapter
+import com.example.newsapp.ui.countrynews.CountryNewsViewModel
 import com.example.newsapp.ui.topheadline.TopHeadlineAdapter
 import com.example.newsapp.ui.topheadline.TopHeadlineViewModel
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationAdapter
@@ -58,6 +61,16 @@ class ActivityModule(private val activity: AppCompatActivity) {
     }
 
     @Provides
+    fun provideCountryNewsViewModel(
+        repository: CountryNewsRepository,
+        dispatcherProvider: DispatcherProvider
+    ): CountryNewsViewModel {
+        return ViewModelProvider(activity, ViewModelProviderFactory(CountryNewsViewModel::class) {
+            CountryNewsViewModel(repository, dispatcherProvider = dispatcherProvider)
+        })[CountryNewsViewModel::class.java]
+    }
+
+    @Provides
     fun provideTopHeadlineAdapter() = TopHeadlineAdapter(ArrayList())
 
     @Provides
@@ -65,6 +78,9 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @Provides
     fun provideCategoryNewsAdapter() = CategoryNewsAdapter(ArrayList())
+
+    @Provides
+    fun provideCountryNewsAdapter() = CountryNewsAdapter(ArrayList())
 }
 
 
