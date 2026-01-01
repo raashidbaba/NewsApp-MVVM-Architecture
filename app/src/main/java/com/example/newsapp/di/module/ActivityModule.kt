@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.newsapp.data.repository.CategoryNewsRepository
 import com.example.newsapp.data.repository.CountryNewsRepository
+import com.example.newsapp.data.repository.LanguageNewsRepository
 import com.example.newsapp.data.repository.TopHeadlinePagingRepository
 import com.example.newsapp.data.repository.TopHeadlineRepository
 import com.example.newsapp.di.ActivityContext
@@ -13,6 +14,8 @@ import com.example.newsapp.ui.categorynews.CategoryNewsAdapter
 import com.example.newsapp.ui.categorynews.CategoryNewsViewModel
 import com.example.newsapp.ui.countrynews.CountryNewsAdapter
 import com.example.newsapp.ui.countrynews.CountryNewsViewModel
+import com.example.newsapp.ui.languageNews.LanguageNewsAdapter
+import com.example.newsapp.ui.languageNews.LanguageNewsViewModel
 import com.example.newsapp.ui.topheadline.TopHeadlineAdapter
 import com.example.newsapp.ui.topheadline.TopHeadlineViewModel
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationAdapter
@@ -31,7 +34,8 @@ class ActivityModule(private val activity: AppCompatActivity) {
 
     @Provides
     fun provideTopHeadlineViewModel(topHeadlineRepository: TopHeadlineRepository): TopHeadlineViewModel {
-        return ViewModelProvider(activity,
+        return ViewModelProvider(
+            activity,
             ViewModelProviderFactory(TopHeadlineViewModel::class) {
                 TopHeadlineViewModel(topHeadlineRepository)
             })[TopHeadlineViewModel::class.java]
@@ -71,16 +75,34 @@ class ActivityModule(private val activity: AppCompatActivity) {
     }
 
     @Provides
-    fun provideTopHeadlineAdapter() = TopHeadlineAdapter(ArrayList())
+    fun provideLanguageNewsViewModel(
+        repository: LanguageNewsRepository,
+        dispatcherProvider: DispatcherProvider
+    ): LanguageNewsViewModel {
+        return ViewModelProvider(
+            activity,
+            ViewModelProviderFactory(LanguageNewsViewModel::class)
+         {
+            LanguageNewsViewModel(repository, dispatcherProvider)
+        })[LanguageNewsViewModel::class.java]
+    }
+
+
+
+@Provides
+fun provideTopHeadlineAdapter() = TopHeadlineAdapter(ArrayList())
+
+@Provides
+fun provideTopHeadlinesPaginationAdapter() = TopHeadlinePaginationAdapter()
+
+@Provides
+fun provideCategoryNewsAdapter() = CategoryNewsAdapter(ArrayList())
+
+@Provides
+fun provideCountryNewsAdapter() = CountryNewsAdapter(ArrayList())
 
     @Provides
-    fun provideTopHeadlinesPaginationAdapter() = TopHeadlinePaginationAdapter()
-
-    @Provides
-    fun provideCategoryNewsAdapter() = CategoryNewsAdapter(ArrayList())
-
-    @Provides
-    fun provideCountryNewsAdapter() = CountryNewsAdapter(ArrayList())
+    fun provideLanguageNewsAdapter() = LanguageNewsAdapter(ArrayList())
 }
 
 
