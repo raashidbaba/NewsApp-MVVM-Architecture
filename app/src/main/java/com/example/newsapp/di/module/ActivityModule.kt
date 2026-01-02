@@ -16,7 +16,7 @@ import com.example.newsapp.ui.countrynews.CountryNewsAdapter
 import com.example.newsapp.ui.countrynews.CountryNewsViewModel
 import com.example.newsapp.ui.languageNews.LanguageNewsAdapter
 import com.example.newsapp.ui.languageNews.LanguageNewsViewModel
-import com.example.newsapp.ui.topheadline.TopHeadlineAdapter
+import com.example.newsapp.ui.topheadline.TopHeadlineSourcesAdapter
 import com.example.newsapp.ui.topheadline.TopHeadlineViewModel
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationAdapter
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationViewModel
@@ -88,9 +88,8 @@ class ActivityModule(private val activity: AppCompatActivity) {
     }
 
 
-
-@Provides
-fun provideTopHeadlineAdapter() = TopHeadlineAdapter(ArrayList())
+    @Provides
+    fun provideTopHeadlineAdapter() = TopHeadlineSourcesAdapter(ArrayList())
 
 @Provides
 fun provideTopHeadlinesPaginationAdapter() = TopHeadlinePaginationAdapter()
