@@ -10,7 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newsapp.NewsApplication
-import com.example.newsapp.data.model.Article
+import com.example.newsapp.data.model.ApiSource
 import com.example.newsapp.databinding.ActivityTopHeadlineBinding
 import com.example.newsapp.di.component.DaggerActivityComponent
 import com.example.newsapp.di.module.ActivityModule
@@ -27,7 +27,7 @@ class TopHeadlineActivity : AppCompatActivity() {
     lateinit var topHeadlineViewModel: TopHeadlineViewModel
 
     @Inject
-    lateinit var adapter: TopHeadlineAdapter
+    lateinit var adapter: TopHeadlineSourcesAdapter
 
     private lateinit var binding: ActivityTopHeadlineBinding
 
@@ -83,7 +83,8 @@ class TopHeadlineActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun renderList(articleList: List<Article>) {
+    private fun renderList(articleList: List<ApiSource>) {
+        adapter.clearData()
         adapter.addData(articleList)
     }
 
