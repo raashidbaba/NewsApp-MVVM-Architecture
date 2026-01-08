@@ -1,16 +1,23 @@
 package com.example.newsapp.di.module
 
 import android.content.Context
+import androidx.room.Room
 import com.example.newsapp.NewsApplication
+import com.example.newsapp.data.local.AppDatabase
+import com.example.newsapp.data.local.AppDatabaseService
+import com.example.newsapp.data.local.DatabaseService
 import com.example.newsapp.data.remote.NetworkService
 import com.example.newsapp.di.ApplicationContext
 import com.example.newsapp.di.BaseUrl
+import com.example.newsapp.di.DatabaseName
 import com.example.newsapp.di.NetworkApiKey
 import com.example.newsapp.di.NetworkUserAgent
 import com.example.newsapp.utils.AppConstant
 import com.example.newsapp.utils.DefaultDispatcherProvider
+import com.example.newsapp.utils.DefaultNetworkHelper
 import com.example.newsapp.utils.DispatcherProvider
 import com.example.newsapp.utils.HeaderInterceptor
+import com.example.newsapp.utils.NetworkHelper
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -77,7 +84,35 @@ class ApplicationModule(private val application: NewsApplication) {
 
     @Provides
     @Singleton
+    fun provideNetworkHelper(@ApplicationContext context: Context): NetworkHelper =
+        DefaultNetworkHelper(context)
+
+    @Provides
+    @Singleton
     fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
 
 
+    @DatabaseName
+    @Provides
+    fun provideDatabaseName(): String = "news-database"
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(
+        @ApplicationContext context: Context,
+        @DatabaseName databaseName: String
+    ): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            databaseName
+        ).build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideDatabaseService(appDatabase: AppDatabase): DatabaseService {
+        return AppDatabaseService(appDatabase)
+    }
 }

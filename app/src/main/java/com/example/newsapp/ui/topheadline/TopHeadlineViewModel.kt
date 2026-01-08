@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsapp.data.model.ApiSource
 import com.example.newsapp.data.repository.TopHeadlineRepository
 import com.example.newsapp.ui.base.UiState
-import com.example.newsapp.utils.AppConstant
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -26,7 +25,7 @@ class TopHeadlineViewModel @Inject constructor(private val topHeadlineRepository
 
     private fun fetchTopHeadlines() {
         viewModelScope.launch {
-            topHeadlineRepository.getTopHeadlines(AppConstant.COUNTRY)
+            topHeadlineRepository.getTopHeadlines()
                 .catch { e ->
                     _uiState.value = UiState.Error(e.toString())
                 }

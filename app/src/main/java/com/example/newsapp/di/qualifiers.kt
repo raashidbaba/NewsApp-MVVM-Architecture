@@ -21,3 +21,7 @@ annotation class NetworkUserAgent
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class BaseUrl
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class DatabaseName

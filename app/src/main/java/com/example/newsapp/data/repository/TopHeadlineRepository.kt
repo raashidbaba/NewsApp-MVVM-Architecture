@@ -11,9 +11,9 @@ import javax.inject.Singleton
 @Singleton
 class TopHeadlineRepository @Inject constructor(private val networkService: NetworkService) {
 
-    fun getTopHeadlines(country: String): Flow<List<ApiSource>> {
+    fun getTopHeadlines(): Flow<List<ApiSource>> {
         return flow {
-            emit(networkService.getTopHeadlines(country))
+            emit(networkService.getTopHeadlines())
         }.map {
             it.sources
         }
