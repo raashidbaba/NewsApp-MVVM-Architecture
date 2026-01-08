@@ -7,8 +7,8 @@ import retrofit2.http.Query
 
 interface NetworkService {
 
-    @GET("top-headlines")
-    suspend fun getTopHeadlines(@Query("country") country: String): TopHeadlineSources
+    @GET("top-headlines/sources")
+    suspend fun getTopHeadlines(): TopHeadlineSources
 
     @GET("top-headlines/sources")
     suspend fun getPaginatedTopHeadline(

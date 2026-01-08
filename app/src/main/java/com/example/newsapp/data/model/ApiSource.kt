@@ -1,5 +1,6 @@
 package com.example.newsapp.data.model
 
+import com.example.newsapp.data.local.entity.Source
 import com.google.gson.annotations.SerializedName
 
 data class ApiSource(
@@ -20,4 +21,15 @@ data class ApiSource(
 )
 
 
+fun ApiSource.toSourceEntity(): Source {
+    return Source(
+        sourceId = 0,
+        category = category,
+        country = country,
+        description = description,
+        id = id,
+        language = language,
+        name = name, url = url
+    )
+}
 

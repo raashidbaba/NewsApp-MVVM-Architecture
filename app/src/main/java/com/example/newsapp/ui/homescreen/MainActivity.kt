@@ -7,6 +7,7 @@ import com.example.newsapp.databinding.ActivityMainBinding
 import com.example.newsapp.ui.categorynews.CategoryDisplayActivity
 import com.example.newsapp.ui.countrynews.CountryDisplayActivity
 import com.example.newsapp.ui.languageNews.LanguageDisplayActivity
+import com.example.newsapp.ui.offlineTopHeadlines.OfflineTopHeadlinesActivity
 import com.example.newsapp.ui.topheadline.TopHeadlineActivity
 import com.example.newsapp.ui.topheadlinepagination.TopHeadlinePaginationActivity
 
@@ -39,6 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.languageSelectionButton.setOnClickListener {
             val intent = Intent(this, LanguageDisplayActivity::class.java)
+            startActivity(intent)
+        }
+        binding.offlineTopHeadlinesButton.setOnClickListener {
+            val intent = Intent(this, OfflineTopHeadlinesActivity::class.java)
             startActivity(intent)
         }
     }
